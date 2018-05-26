@@ -22,7 +22,7 @@ public class NotesServiceImpl implements NotesService {
 
     @Override
     public Note findById(int id) {
-        return notesRepository.findById(id).orElseThrow(NoteNotFoundException::new);  // ссылка на конструктор
+        return notesRepository.findById(id).orElseThrow(() -> new NoteNotFoundException(id + " not found"));  // ссылка на конструктор
     }
 
     @Override
