@@ -8,6 +8,7 @@
             <div class="card">
                 <div class="card-content">
                     <span class="card-title" data-th-text="${note.name}"></span>
+                    <img class="responsive-img" data-th-src="@{/static/{id}.jpg(id=${note.id})}">
                     <p data-th-text="${note.content}"></p>
                 </div>
                 <div class="card-action">

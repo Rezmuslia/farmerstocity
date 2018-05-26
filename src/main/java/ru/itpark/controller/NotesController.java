@@ -3,6 +3,7 @@ package ru.itpark.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.itpark.domain.Note;
 import ru.itpark.service.NotesService;
 
@@ -28,8 +29,8 @@ public class NotesController {
     }
 
     @PostMapping("/add")
-    public String add(@ModelAttribute Note note) {
-        notesService.add(note);
+    public String add(@ModelAttribute Note note, @RequestParam MultipartFile image) {
+        notesService.add(note, image);
 
         return "redirect:/notes";
     }

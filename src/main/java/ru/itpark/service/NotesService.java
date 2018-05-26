@@ -1,5 +1,6 @@
 package ru.itpark.service;
 
+import org.springframework.web.multipart.MultipartFile;
 import ru.itpark.domain.Note;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface NotesService {
 
     void removeById(int id);
 
-    void add(Note note);
+    void add(Note note, MultipartFile image);
 }
