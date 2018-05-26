@@ -4,6 +4,11 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col s12 section">
+            <div class="right-align" data-th-include="fragments/layout :: logoutFragment"></div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col s12">
             <h1>Add Note</h1>
             <form data-th-action="@{/notes/add}" method="post" enctype="multipart/form-data">
