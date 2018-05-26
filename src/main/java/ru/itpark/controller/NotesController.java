@@ -1,9 +1,6 @@
 package ru.itpark.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.itpark.domain.Account;
 import ru.itpark.domain.Note;
 import ru.itpark.service.NotesService;
-
-import java.security.Principal;
 
 @Controller
 @RequestMapping("/notes")
@@ -29,13 +24,13 @@ public class NotesController {
         model.addAttribute("account", account);
         model.addAttribute("notes", notesService.findAll());
 
-        return "notes";
+        return "pages/notes";
     }
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public String addForm() {
-        return "note-add";
+        return "pages/note-add";
     }
 
     @PostMapping("/add")
@@ -50,7 +45,7 @@ public class NotesController {
     public String get(@PathVariable int id, Model model) {
         model.addAttribute("note", notesService.findById(id));
 
-        return "note";
+        return "pages/note";
     }
 
     @PreAuthorize("hasRole('ADMIN')")  // only admin can delete notes
