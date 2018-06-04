@@ -2,7 +2,6 @@ package ru.itpark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.itpark.domain.Account;
@@ -14,9 +13,9 @@ import java.util.List;
 public class SpringBootWebApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(SpringBootWebApplication.class, args);
-		PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
-		AccountRepository repository = context.getBean(AccountRepository.class);
+		var context = SpringApplication.run(SpringBootWebApplication.class, args);
+		var encoder = context.getBean(PasswordEncoder.class);
+		var repository = context.getBean(AccountRepository.class);
 
 		repository.saveAll(
 				List.of(
