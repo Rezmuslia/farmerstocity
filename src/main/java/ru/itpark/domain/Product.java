@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Note {
+public class Product {
     @Id
     @GeneratedValue
     private int id;

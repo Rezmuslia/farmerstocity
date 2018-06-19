@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title='Add Note')"></head>
+<head data-th-replace="fragments/layout :: headFragment(title='Add Product')"></head>
 <body>
 <div class="container">
     <div class="row">
@@ -10,18 +10,18 @@
     </div>
     <div class="row">
         <div class="col s12">
-            <h1>Add Note</h1>
-            <form data-th-action="@{/notes/add}" method="post" enctype="multipart/form-data">
+            <h1>Add Product</h1>
+            <form data-th-action="@{/add}" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="Note name" id="name" name="name" type="text" class="validate" required>
-                        <label for="name">Note name</label>
+                        <input placeholder="Product name" id="name" name="name" type="text" class="validate" required>
+                        <label for="name">Product name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="content" name="content" class="materialize-textarea" required></textarea>
-                        <label for="content">Note content</label>
+                        <label for="content">Product content</label>
                     </div>
                 </div>
                 <div class="row">

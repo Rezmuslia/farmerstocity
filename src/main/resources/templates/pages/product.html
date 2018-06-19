@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title=${note.name})"></head>
+<head data-th-replace="fragments/layout :: headFragment(title=${product.name})"></head>
 <body>
 <div class="container">
     <div class="row">
@@ -12,12 +12,12 @@
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title" data-th-text="${note.name}"></span>
-                    <img class="responsive-img" data-th-src="@{/static/{id}.jpg(id=${note.id})}">
-                    <p data-th-text="${note.content}"></p>
+                    <span class="card-title" data-th-text="${product.name}"></span>
+                    <img class="responsive-img" data-th-src="@{/static/{id}.jpg(id=${product.id})}">
+                    <p data-th-text="${product.content}"></p>
                 </div>
                 <div class="card-action">
-                    <form data-th-action="@{/notes/{id}/remove(id=${note.id})}" method="post">
+                    <form data-th-action="@{/notes/{id}/remove(id=${product.id})}" method="post">
                         <button class="waves-effect waves-light btn" type="submit">Remove</button>
                     </form>
                 </div>

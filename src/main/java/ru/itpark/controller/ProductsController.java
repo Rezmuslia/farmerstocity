@@ -7,52 +7,55 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itpark.domain.Account;
-import ru.itpark.domain.Note;
-import ru.itpark.service.NotesService;
+import ru.itpark.domain.Product;
+import ru.itpark.service.ProductsService;
 
 @Controller
-@RequestMapping("/notes")
-public class NotesController {
-    private final NotesService notesService;
+@RequestMapping("/")
+public class ProductsController {
+    private final ProductsService productsService;
 
-    public NotesController(NotesService notesService) {
-        this.notesService = notesService;
+    public ProductsController(ProductsService productsService) {
+        this.productsService = productsService;
     }
 
     @GetMapping
     public String getAll(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
-        model.addAttribute("notes", notesService.findAll());
+        model.addAttribute("products", productsService.findAll());
 
-        return "pages/notes";
+        return "pages/products";
     }
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public String addForm() {
-        return "pages/note-add";
+        return "pages/product-add";
     }
 
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
-    public String add(@ModelAttribute Note note, @RequestParam MultipartFile image) {
-        notesService.add(note, image);
+    public String add(@ModelAttribute Product product, @RequestParam MultipartFile image) {
+        productsService.add(product, image);
 
-        return "redirect:/notes";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}") // {id} -> /notes/1
     public String get(@PathVariable int id, Model model) {
-        model.addAttribute("note", notesService.findById(id));
+        model.addAttribute("product", productsService.findById(id));
 
-        return "pages/note";
+        return "pages/product";
     }
 
     @PreAuthorize("hasRole('ADMIN')")  // only admin can delete notes
     @PostMapping("/{id}/remove")
     public String remove(@PathVariable int id) {
-        notesService.removeById(id);
+        productsService.removeById(id);
 
-        return "redirect:/notes";
+        return "redirect:/";
     }
+
+
+
 }
