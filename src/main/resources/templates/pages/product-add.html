@@ -1,6 +1,23 @@
+<div class="col s12 m7">
+    <h2 class="header">Farmers to city</h2>
+    <div class="card horizontal">
+        <div class="card-image">
+            <img src="http://bogorodskoe43.ru/uploads/posts/2015-09/1442743911_1000.jpg">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <p>Как это работает. Заполните анкету, добавьте ваш товар.</p>
+            </div>
+            <div class="card-action">
+                <a href="http://localhost:8080/">Главная</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!doctype html>
 <html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title='Add Product')"></head>
+<head data-th-replace="fragments/layout :: headFragment(title='Sale Product')"></head>
 <body>
 <div class="container">
     <div class="row">
@@ -10,7 +27,7 @@
     </div>
     <div class="row">
         <div class="col s12">
-            <h1>Add Product</h1>
+            <h1>Sale Product</h1>
             <form data-th-action="@{/add}" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12">
@@ -20,8 +37,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="content" name="content" class="materialize-textarea" required></textarea>
-                        <label for="content">Product content</label>
+                        <textarea id="comment" name="comment" class="materialize-textarea" required></textarea>
+                        <label for="comment">Product comment</label>
                     </div>
                 </div>
                 <div class="row">

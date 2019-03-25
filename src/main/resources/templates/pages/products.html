@@ -1,23 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>Farm Products - Materialize</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
+<head data-th-replace="fragments/layout :: headFragment(title='Farm Products')"></head>
 <body>
 <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Farm products to city</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Sale Product</a></li>
+            <li><a href="#">Реализовать продукцию</a></li>
         </ul>
-
-        <ul id="nav-mobile" class="side-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 section">
+                    <div class="right-align" data-th-include="fragments/layout :: logoutFragment"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <img class="materialboxed" width="650" src="http://www.akkor.ru/sites/default/files/styles/large/public/yarmarka2_0.jpg?itok=dU008UwQ">
+                    <ul id="nav-mobile" class="side-nav">
             <li><a href="#">Buy Product</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -26,22 +25,37 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <br><br>
-        <h1 class="header center orange-text">Farm Products</h1>
+        <h1 class="header center green-text">Farm Products</h1>
         <div class="row center">
             <h5 class="header col s12 light">Это площадка для реализации фермерской продукции.</h5>
         </div>
-        <div class="row center">
-            <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+    </div>
+</div>
+<br><br>
+</div>
+<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
+</body>
+</html>
+<div>
+            <ul class="collection">
+                <li class="collection-item" data-th-each="product : ${products}">
+                    <a data-th-href="@{/{id} (id=${product.id}) }">
+                        <span data-th-text="${product.name}"></span>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <div class="row center">
+            <a data-th-if="${@accountService.hasRole('ADMIN')}" data-th-href="@{/buy}" class="btn-large waves-effect waves-light green btn">Купить</a>
+            <a href="http://localhost:8080/add" id="download-button" class="btn-large waves-effect waves-light green">Продать</a>
+        </div>
+
         <br><br>
 
     </div>
 </div>
-
-
 <div class="container">
     <div class="section">
-
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12 m4">
@@ -52,104 +66,89 @@
                     <p class="light">Вы хотите приобрести фермерскую продукцию без наценок магазинов. Здесь вы найдете все виды сельской продукции: говядина, мясо птицы, молоко и молочные продукты, а также овощи и фрукты. </p>
                 </div>
             </div>
-
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                    <h5 class="center">User Experience Focused</h5>
+                    <h5 class="center">Вы занимаетесь живодтоводством или выращиванием сельхозпродукции. </h5>
 
-                    <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                    <p class="light">Реализуйте вашу продукцию жителям города. Заполните анкету и получайте заказы от городских клиентов.</p>
                 </div>
             </div>
-
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-                    <h5 class="center">Easy to work with</h5>
+                    <h5 class="center">Выгода для каждого</h5>
 
-                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                    <p class="light">Это новый формат покупки/продажи сельхозпродукции. Покупатель приобретает свежую, халяль, здоровую продукцию. Производитель может реализовать свою продукцию напрямую без посредников. </p>
                 </div>
             </div>
         </div>
-
     </div>
     <br><br>
 </div>
+<div class="container">
+    <div class="section">
+        <h1>Chat</h1>
+        <li class="collection-item" data-th-each="chat : ${chats}">
+                <span data-th-text="${chat.name}">:  </span>
+                <span data-th-text="${chat.message}"></span>
+        </li>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <form data-th-action="@{/a}" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Name" id="name" name="name" type="text" class="validate" required>
+                        <label for="name">Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <textarea id="message" name="message" class="materialize-textarea" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                </div>
+                <button class="waves-effect waves-light green btn" type="submit">Add</button>
+            </form>
 
-<footer class="page-footer orange">
+        </div>
+    </div>
+    <br><br>
+</div>
+<footer class="page-footer green">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+                <h5 class="white-text">Био продукция.</h5>
+                <p class="grey-text text-lighten-4"> Мы гарантируем экологически чистую, здоровую продукцию. </p>
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
+                <h5 class="white-text">Продукция животноводства</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li><a class="white-text" href="#!">Говядина</a></li>
+                    <li><a class="white-text" href="#!">Мясо птицы</a></li>
+                    <li><a class="white-text" href="#!">Баранина</a></li>
+                    <li><a class="white-text" href="#!">Молочная продукция</a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
+                <h5 class="white-text">Овощи, фрукты, мед и др.</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li><a class="white-text" href="#!">Картофель</a></li>
+                    <li><a class="white-text" href="#!">Овощные культуры</a></li>
+                    <li><a class="white-text" href="#!">Фрукты и ягоды</a></li>
+                    <li><a class="white-text" href="#!">Мед</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            Наши контакты: <a class="orange-text text-lighten-3" href="http://materializecss.com">rezmuslia@gmail.com, 8950 320 34 65</a>
         </div>
     </div>
 </footer>
-
-
-<!--  Scripts-->
-<img class="materialboxed" width="650" img src="http://greenbelarus.info/files/istockfarmercomputer.jpg">
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-
-</body>
-</html>
-
-
-<!doctype html>
-<html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title='Farm Products')"></head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col s12 section">
-            <div class="right-align" data-th-include="fragments/layout :: logoutFragment"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <h1>Farm Products</h1>
-            <ul class="collection">
-                <li class="collection-item" data-th-each="product : ${products}">
-                    <a data-th-href="@{/{id} (id=${product.id}) }">
-                        <span data-th-text="${product.name}"></span>
-                    </a>
-                </li>
-            </ul>
-            <a data-th-if="${@accountService.hasRole('ADMIN')}" data-th-href="@{/add}" class="waves-effect waves-light btn">Add Product</a>
-        </div>
-    </div>
-</div>
-
-<img class="materialboxed" width="650" img src="http://greenbelarus.info/files/istockfarmercomputer.jpg">
-
 <div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
 
 </body>

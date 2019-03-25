@@ -17,7 +17,7 @@
                     <p data-th-text="${product.content}"></p>
                 </div>
                 <div class="card-action">
-                    <form data-th-action="@{/notes/{id}/remove(id=${product.id})}" method="post">
+                    <form data-th-action="@{/{id}/remove(id=${product.id})}" method="post">
                         <button class="waves-effect waves-light btn" type="submit">Remove</button>
                     </form>
                 </div>

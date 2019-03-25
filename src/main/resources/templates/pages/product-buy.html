@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+<head data-th-replace="fragments/layout :: headFragment(title='Buy Product')"></head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12 section">
+            <div class="right-align" data-th-include="fragments/layout :: logoutFragment"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h1>Buy Product</h1>
+            <form data-th-action="@{/buy}" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Product name" id="name" name="name" type="text" class="validate" required>
+                        <label for="name">Product name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="comments" name="comments" class="materialize-textarea" required></textarea>
+                        <label for="comments">Product comments</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="file-field input-field">
+                        <!-- Dropdown Trigger -->
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Способ оплаты</a>
+
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content'>
+                            <li><a href="#!">Наличными</a></li>
+                            <li><a href="#!">Банковской картой</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#!">Денежным переводом</a></li>
+
+                        </ul>
+
+
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                <button class="waves-effect waves-light btn" type="submit">Buy</button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
+</div>
+</body>
+</html>
+
+<div class="row">
+    <div class="col s12 m5">
+        <div class="card-panel teal">
+          <span class="white-text">Наш сайт предлагает только свежие натуральные продукты с естественным сроком годности и знает как быстро и бережно доставить их своим клиентам.
+
+          </span>
+        </div>
+    </div>
+</div>
+

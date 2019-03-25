@@ -1,32 +1,148 @@
+
+
+<!--<img class="materialboxed" width="650" src="https://mifarm.ru/sites/default/files/2014/12/10/category-image/1418178373.jpg">-->
+
 <!doctype html>
 <html lang="en">
-<head data-th-replace="fragments/layout :: headFragment(title='Add Note')"></head>
+<head data-th-replace="fragments/layout :: headFragment(title='Login')"></head>
 <body>
 <div class="container">
     <div class="row">
-        <div class="col s12">
+        <div class="col s6">
             <h1>Login</h1>
-            <form name="f" data-th-action="@{/login}" method="post">
+            <form data-th-action="@{/login}" method="post" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input placeholder="Login" id="login" name="username" type="text" class="validate" required>
                         <label for="login">Login</label>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input placeholder="Password" id="password" name="password" type="password" class="validate" required>
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <button class="waves-effect waves-light btn" type="submit">Add</button>
+                <button class="waves-effect waves-light btn" type="submit">Login</button>
             </form>
 
         </div>
     </div>
-
-
-    <div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
 </div>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Farm products to city</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Реализовать продукцию</a></li>
+        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 section">
+                    <div class="right-align" data-th-include="fragments/layout :: logoutFragment"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <img class="materialboxed" width="650" src="http://www.akkor.ru/sites/default/files/styles/large/public/yarmarka2_0.jpg?itok=dU008UwQ">
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="#">Buy Product</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+</nav>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center green-text">Farm Products</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">Это площадка для реализации фермерской продукции.</h5>
+        </div>
+    </div>
+</div>
+<br><br>
+</div>
+<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
 </body>
 </html>
+<div>
+    <ul class="collection">
+        <li class="collection-item" data-th-each="product : ${products}">
+            <a data-th-href="@{/{id} (id=${product.id}) }">
+                <span data-th-text="${product.name}"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<br><br>
+
+</div>
+</div>
+<div class="container">
+    <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+                    <h5 class="center">Свежая, экологически чистая продукция.</h5>
+
+                    <p class="light">Вы хотите приобрести фермерскую продукцию без наценок магазинов. Здесь вы найдете все виды сельской продукции: говядина, мясо птицы, молоко и молочные продукты, а также овощи и фрукты. </p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+                    <h5 class="center">Вы занимаетесь живодтоводством или выращиванием сельхозпродукции. </h5>
+
+                    <p class="light">Реализуйте вашу продукцию жителям города. Заполните анкету и получайте заказы от городских клиентов.</p>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+                    <h5 class="center">Выгода для каждого</h5>
+
+                    <p class="light">Это новый формат покупки/продажи сельхозпродукции. Покупатель приобретает свежую, халяль, здоровую продукцию. Производитель может реализовать свою продукцию напрямую без посредников. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
+<footer class="page-footer green">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Био продукция.</h5>
+                <p class="grey-text text-lighten-4"> Мы гарантируем экологически чистую, здоровую продукцию. </p>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Продукция животноводства</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Говядина</a></li>
+                    <li><a class="white-text" href="#!">Мясо птицы</a></li>
+                    <li><a class="white-text" href="#!">Баранина</a></li>
+                    <li><a class="white-text" href="#!">Молочная продукция</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Овощи, фрукты, мед и др.</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Картофель</a></li>
+                    <li><a class="white-text" href="#!">Овощные культуры</a></li>
+                    <li><a class="white-text" href="#!">Фрукты и ягоды</a></li>
+                    <li><a class="white-text" href="#!">Мед</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Наши контакты: <a class="orange-text text-lighten-3" href="http://materializecss.com">rezmuslia@gmail.com, 8950 320 34 65</a>
+        </div>
+    </div>
+</footer>
+<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
+</body>
+</html>
+
