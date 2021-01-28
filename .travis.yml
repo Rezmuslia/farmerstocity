@@ -1,0 +1,8 @@
+language: java
+jdk: oraclejdk11
+script: mvn -e verify
+notifications:
+  email:
+    recipients: -rezmuslia@gmail.com
+    on_failure: always
+    on_success: change
