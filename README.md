@@ -1,0 +1,2 @@
+
+[![Build Status](https://travis-ci.org/Rezmuslia/farmerstocity.svg?branch=main)](https://travis-ci.org/Rezmuslia/farmerstocity)[![codecov](https://codecov.io/gh/Rezmuslia/farmerstocity/branch/main/graph/badge.svg?token=WM4XFRKVT4)](https://codecov.io/gh/Rezmuslia/farmerstocity)
